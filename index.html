@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steam4All - Coding for Gender Equality</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- PrismJS for Syntax Highlighting (VS Code Dark Plus Theme) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-vsc-dark-plus.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              cream: '#FDFBF7',
+              primary: '#1F2937', // Slate 800
+              accent: '#8B5CF6', // Violet 500
+              'accent-light': '#DDD6FE',
+              secondary: '#FEF3C7', // Amber 100
+              success: '#10B981', // Emerald 500
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for code editor */
+      .custom-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #555 #1e1e1e;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1e1e1e; 
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #555; 
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #777; 
+      }
+      
+      /* Animation for success */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      /* Global smooth transition for theme switching */
+      .theme-transition, .theme-transition * {
+        transition-property: background-color, border-color, color, fill, stroke, background-image;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      /* Exclude transitions for transform to improve performance on moving elements if needed, 
+         but keeping it simple usually works best */
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body class="theme-transition bg-cream text-primary antialiased selection:bg-accent selection:text-white dark:bg-gray-900 dark:text-gray-100">
+    <div id="root"></div>
+  </body>
+</html>
