@@ -4,15 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://SebasDeb.github.io/Steam4All",
-
   "scripts": {
     "dev": "vite",
-    "vite_build": "vite build",
-    "preview": "vite preview",
+    "build": "tsc && vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@google/genai": "^1.30.0",
@@ -28,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "gh-pages": "^6.3.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }
