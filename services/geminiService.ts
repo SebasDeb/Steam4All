@@ -1,11 +1,39 @@
 import { GoogleGenAI } from "@google/genai";
 import { ExecutionResult } from "../types";
 
-// Helper to ensure we don't crash if env is missing, though instructions say assume it's there.
+// Helper to get API key safely across different environments (Vite, CRA, etc.)
+const getApiKey = (): string => {
+  let key = '';
+  
+  // Try Vite environment variable
+  try {
+    // @ts-ignore
+    if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_KEY) {
+      // @ts-ignore
+      key = import.meta.env.VITE_API_KEY;
+    }
+  } catch (e) {
+    // Ignore error if import.meta is not available
+  }
+
+  // Try standard process.env (Create React App / Node)
+  if (!key) {
+    try {
+      if (typeof process !== 'undefined' && process.env) {
+        key = process.env.REACT_APP_API_KEY || process.env.API_KEY || '';
+      }
+    } catch (e) {
+      // Ignore
+    }
+  }
+
+  return key;
+};
+
 const getClient = () => {
-  const apiKey = process.env.API_KEY || '';
+  const apiKey = getApiKey();
   if (!apiKey) {
-    console.warn("API_KEY is missing in process.env");
+    console.warn("API Key is missing. Please check your .env file.");
   }
   return new GoogleGenAI({ apiKey });
 };
@@ -40,7 +68,7 @@ export const runPythonCode = async (code: string): Promise<ExecutionResult> => {
   } catch (error) {
     console.error("Gemini Execution Error:", error);
     return {
-      output: "Error: Unable to connect to the AI execution engine. Please check your API key or internet connection.",
+      output: "Error: Unable to connect to the AI execution engine. Please check your API key in .env or internet connection.",
       isError: true
     };
   }
@@ -71,6 +99,7 @@ export const getAIHelp = async (code: string, question: string): Promise<string>
     });
     return response.text || "I couldn't generate a hint right now. Try again!";
   } catch (error) {
-    return "Sorry, I'm having trouble connecting to the network right now.";
+    console.error("Gemini Help Error:", error);
+    return "Sorry, I'm having trouble connecting to the network right now. Please check your API Key.";
   }
 };

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Steam4All - Coding for Gender Equality</title>
+    <!-- Tailwind Play CDN for easy styling without build setup -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,9 +72,6 @@
         transition-duration: 300ms;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       }
-      
-      /* Exclude transitions for transform to improve performance on moving elements if needed, 
-         but keeping it simple usually works best */
     </style>
   <script type="importmap">
 {
@@ -89,5 +87,7 @@
 </head>
   <body class="theme-transition bg-cream text-primary antialiased selection:bg-accent selection:text-white dark:bg-gray-900 dark:text-gray-100">
     <div id="root"></div>
+    <!-- Entry point for Vite applications -->
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

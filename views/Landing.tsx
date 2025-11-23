@@ -4,6 +4,7 @@ import { FEATURES, PYTHON_COURSE } from '../constants';
 import { ArrowRight, Globe, CheckCircle } from 'lucide-react';
 import { HeroIllustration, StudentIllustration, IconGift, IconBot, IconCommunity } from '../components/Illustrations';
 
+
 interface LandingProps {
   onStartCourse: () => void;
 }
